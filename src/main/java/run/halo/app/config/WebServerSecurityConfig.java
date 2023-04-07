@@ -83,7 +83,7 @@ public class WebServerSecurityConfig {
             .securityContextRepository(securityContextRepository)
             .headers()
             .frameOptions().mode(SAMEORIGIN)
-            .referrerPolicy().policy(STRICT_ORIGIN_WHEN_CROSS_ORIGIN).and()
+//             .referrerPolicy().policy(STRICT_ORIGIN_WHEN_CROSS_ORIGIN).and()
             .cache().disable().and()
             .anonymous(spec -> spec.authenticationFilter(
                 new HaloAnonymousAuthenticationWebFilter("portal", AnonymousUserConst.PRINCIPAL,
