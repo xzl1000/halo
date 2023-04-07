@@ -1,6 +1,7 @@
 package run.halo.app.config;
 
 import static org.springframework.security.config.Customizer.withDefaults;
+import static org.springframework.security.web.server.header.ReferrerPolicyServerHttpHeadersWriter.ReferrerPolicy.NO_REFERRER;
 import static org.springframework.security.web.server.header.ReferrerPolicyServerHttpHeadersWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN;
 import static org.springframework.security.web.server.header.XFrameOptionsServerHttpHeadersWriter.Mode.SAMEORIGIN;
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
@@ -83,7 +84,7 @@ public class WebServerSecurityConfig {
             .securityContextRepository(securityContextRepository)
             .headers()
             .frameOptions().mode(SAMEORIGIN)
-            .referrerPolicy().policy(STRICT_ORIGIN_WHEN_CROSS_ORIGIN).and()
+            .referrerPolicy().policy(NO_REFERRER).and()
             .cache().disable().and()
             .anonymous(spec -> spec.authenticationFilter(
                 new HaloAnonymousAuthenticationWebFilter("portal", AnonymousUserConst.PRINCIPAL,
